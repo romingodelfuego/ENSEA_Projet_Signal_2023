@@ -60,8 +60,20 @@ title('Comparaison entre l estimateur unbiased and biased de l autocorrellation 
 figure(5)
 
 % Import Voice or Not Voice
-file_path = './data/voise_ooo.flac';
+file_path = './data/voise_oo.flac';
 [y_song,fe]=audioread(file_path);
 y = fft(y_song);
 x =linspace(0,fe,length(y_song));
 plot(x,abs(y));
+
+figure (6)
+plot(Nusin, PSDsin)
+xlabel("fréquence réduite Nu")
+ylabel("Amplitude")
+title("Estimation de la DSP par Corrélogramme")
+
+figure (6)
+plot(NuBruit, PSDBruit)
+xlabel("fréquence réduite Nu")
+ylabel("Amplitude")
+title("Estimation de la DSP par Corrélogramme")

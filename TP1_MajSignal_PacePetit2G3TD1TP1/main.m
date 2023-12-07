@@ -3,12 +3,13 @@
 
 
 % Constantes
-N=300; %Nombre d'échantillons
+N=512; %Nombre d'échantillons
 Fe=44100; %Freq échantillonage
 var=0.5; %Variance de whitenoise
 a=0.8; %Paramètre autorégressif
 freq=440; %Freq sinus
-p=200; 
+p=200;
+Nu0=sqrt(2)/8;
 
 
 %Data échantillon
@@ -44,3 +45,10 @@ gam_SWave1R=zeros(1,N);
 for i=1:N
     gam_SWave1R(1,i)=((a^2)/2)*cos(2*pi*(freq/Fe)*i);
 end
+
+%PSDC
+Sin1=genSW(N,2,sqrt(2),8);
+[PSDsin, Nusin] = psdEstimatorC(Sin1, 500);
+Bruit1=genBB(N,var);
+[PSDBruit, NuBruit] = psdEstimatorC(Bruit1, 500);
+

@@ -2,7 +2,7 @@ function bool = isVoiced(Cx)
 err=0;
 f_Humain=[100-err,400+err];
 % Import Voice or Not Voice
-file_path = './data/voise_ooo.flac';
+file_path = './data/nonvoise_th.flac';
 [y_song,fe]=audioread(file_path);
 
 %% Méthode avec le spectre en fréquence %%
