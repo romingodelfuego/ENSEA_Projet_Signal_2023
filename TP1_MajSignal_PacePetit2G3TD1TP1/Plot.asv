@@ -58,9 +58,22 @@ ylabel('Autocorrelation');
 title('Comparaison entre l estimateur unbiased and biased de l autocorrellation pour le sinus avec phase aléatoire');
 
 figure(5)
-%Import Voice or Not Voice
-file_path = './data/voise_ooo.flac';
-[y_song,fe]=audioread(file_path);
 
-fft = fft(y_song);
-plot(linspace(0,fe,length(y_song),fft);
+% Import Voice or Not Voice
+file_path = './data/voise_oo.flac';
+[y_song,fe]=audioread(file_path);
+y = fft(y_song);
+x =linspace(0,fe,length(y_song));
+plot(x,abs(y));
+
+figure (6)
+plot(Nusin, PSDsin)
+xlabel("fréquence réduite Nu")
+ylabel("Amplitude")
+title("Estimation de la DSP par Corrélogramme")
+
+figure (7)
+plot(NuBruit1, PSDBruit1,NuBruit2, PSDBruit2,NuBruit, PSDBruit)
+xlabel("fréquence réduite Nu")
+ylabel("Amplitude")
+title("Estimation de la DSP par Corrélogramme")

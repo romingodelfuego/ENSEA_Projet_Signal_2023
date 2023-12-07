@@ -72,8 +72,9 @@ xlabel("fréquence réduite Nu")
 ylabel("Amplitude")
 title("Estimation de la DSP par Corrélogramme")
 
-figure (6)
-plot(NuBruit, PSDBruit)
+figure (7)
+plot(NuBruit1,PSDBruit1,NuBruit2,PSDBruit2,NuBruit3,PSDBruit3);
+legend();
 xlabel("fréquence réduite Nu")
 ylabel("Amplitude")
 title("Estimation de la DSP par Corrélogramme")
