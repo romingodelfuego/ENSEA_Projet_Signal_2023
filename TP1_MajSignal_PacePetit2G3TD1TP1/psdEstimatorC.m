@@ -18,11 +18,9 @@ PSD=fft(Cx,Nfft);
 PSD=2*real(PSD)-Cx(1);
 
 if K~=0
-    fen = zeros(1,round(N/K));
     for nb=1:round(N/K) %%Nombre de fenetre
         PSD(1+K*(nb-1):K*nb) = sum(PSD(1+K*(nb-1):K*nb))/K;
     end
-    
 end
 
 PSD=PSD(1:length(nu));

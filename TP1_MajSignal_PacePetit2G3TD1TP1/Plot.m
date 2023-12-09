@@ -80,8 +80,8 @@ hold off
 
 figure (7)
 hold on
-plot(NuBruit, PSDBruit)
-plot(NuBruit2,PSDPBruit)
+plot(NuBruitC, PSDBruitC)
+plot(NuBruitP,PSDPBruitP)
 hold off
 xlabel("fréquence réduite Nu")
 ylabel("Amplitude")
@@ -90,10 +90,28 @@ legend("Corrélogramme", "Périodogramme");
 
 figure (8)
 hold on
-plot(NuAR1, PSDAR1)
-plot(NuAR2,PSDPAR1)
+plot(NuARC, PSDARC)
+plot(NuARP,PSDPARP)
 hold off
 xlabel("fréquence réduite Nu")
 ylabel("Amplitude")
 title("Estimation de la DSP pour un AR1")
 legend("Corrélogramme", "Périodogramme");
+
+figure (9)
+hold on
+plot(NusinC1, PSDsinC1,NusinC2,PSDsinC2,NusinC3,PSDsinC3);
+hold off;
+xlabel("fréquence réduite Nu");
+ylabel("Amplitude");
+title("Influence de la largeur de fenetre");
+legend("Sin | h=1", "Sin | h=10","Sin | h=50");
+
+figure (10)
+hold on
+plot(NuBruitC1, PSDBruitC1,NuBruitC2,PSDBruitC2,NuBruitC3,PSDBruitC3)
+hold off
+xlabel("fréquence réduite Nu")
+ylabel("Amplitude")
+title("Influence de la largeur de fenetre")
+legend("Bruit | h=50", "Bruit | h=100","Bruit | h=200");

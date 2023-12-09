@@ -44,7 +44,23 @@ gam_SWave1Unb=UnbiasedCrossCorr(SWave1,p);
 gam_SWave1R=zeros(1,N);
 for i=1:N
     gam_SWave1R(1,i)=((a^2)/2)*cos(2*pi*(freq/Fe)*i);
-end
+end 
 
 %PSDC
+Sin1=genSW(N,2,sqrt(2),8);
+[PSDsinC, NusinC] = psdEstimatorC(Sin1, 500);
+[PSDPsinP,NusinP] = psdEstimatorP(Sin1,500);
+Bruit1=genBB(N,var);
+[PSDBruitC, NuBruitC] = psdEstimatorC(Bruit1, 500);
+[PSDPBruitP,NuBruitP] = psdEstimatorP(Bruit1,500);
+Ar1Test= genAR1(N,a,var);
+[PSDARC, NuARC] = psdEstimatorC(Ar1Test, 500);
+[PSDPARP,NuARP] = psdEstimatorP(Ar1Test,500);
+
+
+
+%Moyennage BB et Sin depahasé
+[PSDsinC1, NusinC1] = psdEstimatorC(Sin1, 1);
+[PSDsinC, NusinC2] = psdEstimatorC(Sin1, 1);
+[PSDsinC1, NusinC1] = psdEstimatorC(Sin1, 1);
 

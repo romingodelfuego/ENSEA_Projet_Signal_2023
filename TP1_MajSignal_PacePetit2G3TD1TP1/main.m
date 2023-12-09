@@ -48,12 +48,24 @@ end
 
 %PSDC
 Sin1=genSW(N,2,sqrt(2),8);
-[PSDsin, Nusin] = psdEstimatorC(Sin1, 500);
-[PSDPsin,Nusin2] = psdEstimatorP(Sin1,500);
+[PSDsinC, NusinC] = psdEstimatorC(Sin1, 500);
+[PSDPsinP,NusinP] = psdEstimatorP(Sin1,500);
 Bruit1=genBB(N,var);
-[PSDBruit, NuBruit] = psdEstimatorC(Bruit1, 500);
-[PSDPBruit,NuBruit2] = psdEstimatorP(Bruit1,500);
+[PSDBruitC, NuBruitC] = psdEstimatorC(Bruit1, 500);
+[PSDPBruitP,NuBruitP] = psdEstimatorP(Bruit1,500);
 Ar1Test= genAR1(N,a,var);
-[PSDAR1, NuAR1] = psdEstimatorC(Ar1Test, 500);
-[PSDPAR1,NuAR2] = psdEstimatorP(Ar1Test,500);
+[PSDARC, NuARC] = psdEstimatorC(Ar1Test, 500);
+[PSDPARP,NuARP] = psdEstimatorP(Ar1Test,500);
 
+
+
+%Moyennage BB et Sin depahasé
+[PSDsinC1, NusinC1] = psdEstimatorC(Sin1,500, 1);
+[PSDsinC2, NusinC2] = psdEstimatorC(Sin1,500, 10);
+[PSDsinC3, NusinC3] = psdEstimatorC(Sin1,500, 50);
+
+[PSDBruitC1, NuBruitC1] = psdEstimatorC(Bruit1,500, 50);
+[PSDBruitC2, NuBruitC2] = psdEstimatorC(Bruit1,500, 100);
+[PSDBruitC3, NuBruitC3] = psdEstimatorC(Bruit1,500, 200);
+
+Plot;
