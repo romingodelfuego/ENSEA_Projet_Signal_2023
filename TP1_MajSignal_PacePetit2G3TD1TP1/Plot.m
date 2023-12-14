@@ -68,8 +68,8 @@ plot(x,abs(y));
 
 figure (6)
 hold on
-plot(Nusin, PSDsin)
-plot(Nusin, PSDPsin)
+plot(NusinC, PSDsinC)
+plot(NusinP, PSDPsinP)
 hold off
 xlabel("fréquence réduite Nu")
 ylabel("Amplitude")

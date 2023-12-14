@@ -20,7 +20,6 @@ SWave2=genSW(N,1,freq,Fe);
 SWave3=genSW(N,1,freq,Fe);
 
 
-
 %Computation Bruit Blanc
 gam_wn=BiasedCrossCorr(BruitB,p);
 gam_wnUnb=UnbiasedCrossCorr(BruitB,p);
