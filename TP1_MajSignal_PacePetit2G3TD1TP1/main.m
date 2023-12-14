@@ -67,4 +67,7 @@ Ar1Test= genAR1(N,a,var);
 [PSDBruitC2, NuBruitC2] = psdEstimatorC(Bruit1,500, 100);
 [PSDBruitC3, NuBruitC3] = psdEstimatorC(Bruit1,500, 200);
 
-Plot;
+YuleWalkerSolver(gam_wn,10);
+YuleWalkerSolver(gam_AR1,10);
+YuleWalkerSolver(gam_SWave1,10);
+%Plot;

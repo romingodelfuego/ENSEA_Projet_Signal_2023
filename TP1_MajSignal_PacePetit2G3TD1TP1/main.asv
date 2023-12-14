@@ -20,7 +20,6 @@ SWave2=genSW(N,1,freq,Fe);
 SWave3=genSW(N,1,freq,Fe);
 
 
-
 %Computation Bruit Blanc
 gam_wn=BiasedCrossCorr(BruitB,p);
 gam_wnUnb=UnbiasedCrossCorr(BruitB,p);
@@ -60,7 +59,13 @@ Ar1Test= genAR1(N,a,var);
 
 
 %Moyennage BB et Sin depahasé
-[PSDsinC1, NusinC1] = psdEstimatorC(Sin1, 1);
-[PSDsinC, NusinC2] = psdEstimatorC(Sin1, 1);
-[PSDsinC1, NusinC1] = psdEstimatorC(Sin1, 1);
+[PSDsinC1, NusinC1] = psdEstimatorC(Sin1,500, 1);
+[PSDsinC2, NusinC2] = psdEstimatorC(Sin1,500, 10);
+[PSDsinC3, NusinC3] = psdEstimatorC(Sin1,500, 50);
 
+[PSDBruitC1, NuBruitC1] = psdEstimatorC(Bruit1,500, 50);
+[PSDBruitC2, NuBruitC2] = psdEstimatorC(Bruit1,500, 100);
+[PSDBruitC3, NuBruitC3] = psdEstimatorC(Bruit1,500, 200);
+
+YuleWalkerSolver(S_Wave1,1)
+%Plot;
