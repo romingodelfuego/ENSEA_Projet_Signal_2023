@@ -6,7 +6,7 @@
 N=512; %Nombre d'échantillons
 Fe=44100; %Freq échantillonage
 var=0.5; %Variance de whitenoise
-a=0.8; %Paramètre autorégressif
+a=0.5; %Paramètre autorégressif
 freq=440; %Freq sinus
 p=200;
 Nu0=sqrt(2)/8;
@@ -14,10 +14,10 @@ Nu0=sqrt(2)/8;
 
 %Data échantillon
 BruitB= genBB(N, var);
-Ar1=genAR1(N,a,1);
-SWave1=genSW(N,1,freq,Fe);
-SWave2=genSW(N,1,freq,Fe);
-SWave3=genSW(N,1,freq,Fe);
+Ar1=genAR1(N,a,var);
+SWave1=genSW(N,a,freq,Fe);
+SWave2=genSW(N,a,freq,Fe);
+SWave3=genSW(N,a,freq,Fe);
 
 
 %Computation Bruit Blanc
@@ -67,7 +67,26 @@ Ar1Test= genAR1(N,a,var);
 [PSDBruitC2, NuBruitC2] = psdEstimatorC(Bruit1,500, 100);
 [PSDBruitC3, NuBruitC3] = psdEstimatorC(Bruit1,500, 200);
 
-YuleWalkerSolver(gam_wn,10);
-YuleWalkerSolver(gam_AR1,10);
-YuleWalkerSolver(gam_SWave1,10);
+YuleWalkerSolver(gam_wn,2);
+YuleWalkerSolver(gam_AR1,2);
+YuleWalkerSolver(gam_SWave1,2);
+
+[son1, Fe1] = audioread("./data/193309__margo-heston__ooo.flac");
+
+son1 = son1.';
+son1 = son1(1, :);
+Vectson = 1 : length(son1);
+%son1 = son1(600 : N+599)
+
+Cx1 = UnbiasedCrossCorr(son1)
+
+bool1 = isVoiced(Cx1,Fe)
+
+K1 = 10 ;
+K2 = 30 ;
+[a1, v1] = YuleWalkerSolver(Cx1, K1)
+[a2, v2] = YuleWalkerSolver(Cx1, K2)
+
+Son1EstimK1 = filter(a1, 1, son1)
+Son1EstimK2 = filter(a2, 1, son1)
 %Plot;
