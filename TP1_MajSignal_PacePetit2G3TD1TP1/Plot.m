@@ -28,7 +28,7 @@ figure(2)
 hold on
 stem(gam_wn);
 stem(gam_wnUnb);
-%stem(gam_wnR);
+stem(gam_wnR);
 hold off
 legend('Estimateur Autocorrelation biaisé','Estimateur Unbiased autocorrelation');
 xlabel('p'); 
@@ -39,7 +39,7 @@ figure(3)
 hold on
 stem(gam_AR1);
 stem(gam_AR1Unb);
-%stem(gam_AR1R);
+stem(gam_AR1R);
 hold off
 legend('Estimateur Autocorrelation biaisé','Estimateur Unbiased autocorrelation');
 xlabel('p'); 
@@ -50,7 +50,7 @@ figure(4)
 hold on
 stem(gam_SWave1);
 stem(gam_SWave1Unb);
-%stem(gam_SWave1R)
+stem(gam_SWave1R)
 hold off
 legend('Estimateur Autocorrelation biaisé','Estimateur Unbiased autocorrelation');
 xlabel('p'); 
