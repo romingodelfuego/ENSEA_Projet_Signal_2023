@@ -1,6 +1,4 @@
 %% Project Random Signal Processing
-%%
-
 
 % Constantes
 N=512; %Nombre d'échantillons
@@ -14,7 +12,7 @@ Nu0=sqrt(2)/8;
 
 %Data échantillon
 BruitB= genBB(N, var);
-Ar1=genAR1(N,a,var);
+Ar1=genAR(N,a,var,1);
 SWave1=genSW(N,a,freq,Fe);
 SWave2=genSW(N,a,freq,Fe);
 SWave3=genSW(N,a,freq,Fe);
@@ -52,7 +50,7 @@ Sin1=genSW(N,2,sqrt(2),8);
 Bruit1=genBB(N,var);
 [PSDBruitC, NuBruitC] = psdEstimatorC(Bruit1, 500);
 [PSDPBruitP,NuBruitP] = psdEstimatorP(Bruit1,500);
-Ar1Test= genAR1(N,a,var);
+Ar1Test= genAR(N,a,var,1);
 [PSDARC, NuARC] = psdEstimatorC(Ar1Test, 500);
 [PSDPARP,NuARP] = psdEstimatorP(Ar1Test,500);
 
@@ -75,18 +73,17 @@ YuleWalkerSolver(gam_SWave1,2);
 
 son1 = son1.';
 son1 = son1(1, :);
-Vectson = 1 : length(son1);
 %son1 = son1(600 : N+599)
 
-Cx1 = UnbiasedCrossCorr(son1)
+Cx1 = UnbiasedCrossCorr(son1);
 
-bool1 = isVoiced(Cx1,Fe)
+bool1 = isVoiced(Cx1,Fe);
 
 K1 = 10 ;
 K2 = 30 ;
-[a1, v1] = YuleWalkerSolver(Cx1, K1)
-[a2, v2] = YuleWalkerSolver(Cx1, K2)
+[a1, v1] = YuleWalkerSolver(Cx1, K1);
+[a2, v2] = YuleWalkerSolver(Cx1, K2);
 
-Son1EstimK1 = filter(a1, 1, son1)
-Son1EstimK2 = filter(a2, 1, son1)
+Son1EstimK1 = filter(a1, 1, son1);
+Son1EstimK2 = filter(a2, 1, son1);
 %Plot;
