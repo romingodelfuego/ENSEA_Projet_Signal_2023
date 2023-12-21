@@ -65,8 +65,8 @@ Ar1Test= genAR(N,a,var,1);
 [PSDBruitC2, NuBruitC2] = psdEstimatorC(Bruit1,500, 100);
 [PSDBruitC3, NuBruitC3] = psdEstimatorC(Bruit1,500, 200);
 
-YuleWalkerSolver(gam_wn,2);
-YuleWalkerSolver(gam_AR1,2);
+YuleWalkerSolver(gam_wn,1);
+YuleWalkerSolver(gam_AR1,1);
 YuleWalkerSolver(gam_SWave1,2);
 
 [son1, Fe1] = audioread("./data/193309__margo-heston__ooo.flac");

@@ -5,11 +5,11 @@ function outp = genAR(N,a,var,K)
     end
 
     WNoise=genBB(N,var);
-    den=1;
-    num=ones(1,K);
+    num=1;
+    den=ones(1,K);
     
     for i=1:K
-        num(i+1)=a(i);
+        den(i+1)=a(i);
     end 
-    outp=filter(den,num,WNoise); 
+    outp=filter(num,den,WNoise); 
 end
