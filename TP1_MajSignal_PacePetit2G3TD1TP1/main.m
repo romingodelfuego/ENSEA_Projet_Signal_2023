@@ -12,7 +12,7 @@ Nu0=sqrt(2)/8;
 
 %Data échantillon
 BruitB= genBB(N, var);
-Ar1=genAR(N,a,var,1);
+Ar1=genAR1(N,a,var);
 SWave1=genSW(N,a,freq,Fe);
 SWave2=genSW(N,a,freq,Fe);
 SWave3=genSW(N,a,freq,Fe);

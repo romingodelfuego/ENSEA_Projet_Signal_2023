@@ -1,4 +1,4 @@
-function [pitch,bool = PitchDetector(Cx,Fe,Fmin,Fmax)
+function [pitch,bool] = PitchDetector(Cx,Fe,Fmin,Fmax)
 
 y=abs(fft(Cx));
 [~,indiceOfMax]=max(y);
