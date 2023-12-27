@@ -105,7 +105,7 @@ hold off;
 xlabel("fréquence réduite Nu");
 ylabel("Amplitude");
 title("Influence de la largeur de fenetre");
-legend("Sin | h=1", "Sin | h=10","Sin | h=50");
+legend("Sin | K=1", "Sin | K=2","Sin | K=3");
 
 figure (10)
 hold on
@@ -114,4 +114,13 @@ hold off
 xlabel("fréquence réduite Nu")
 ylabel("Amplitude")
 title("Influence de la largeur de fenetre")
-legend("Bruit | h=50", "Bruit | h=100","Bruit | h=200");
+legend("Bruit | K=1", "Bruit | K=20","Bruit | K=50");
+
+figure (11)
+hold on
+plot(NuAR1C1, PSDAR1C1,NuAR1C2,PSDAR1C2,NuAR1C3,PSDAR1C3)
+hold off
+xlabel("fréquence réduite Nu")
+ylabel("Amplitude")
+title("Influence de la largeur de fenetre")
+legend("AR1 | h=1", "AR1 | h=20","AR1 | h=50");

@@ -19,15 +19,15 @@ SWave3=genSW(N,a,freq,Fe);
 
 
 %Computation Bruit Blanc
-gam_wn=BiasedCrossCorr(BruitB,p);
-gam_wnUnb=UnbiasedCrossCorr(BruitB,p);
+gam_wn=BiasedCrossCorr(BruitB,N);
+gam_wnUnb=UnbiasedCrossCorr(BruitB,N);
 %Bruit Blanc Réel
 gam_wnR=zeros(1,N);
 gam_wnR(1,p+1)=var;
 
 %Computation de AR1
-gam_AR1=BiasedCrossCorr(Ar1,p);
-gam_AR1Unb=UnbiasedCrossCorr(Ar1,p);
+gam_AR1=BiasedCrossCorr(Ar1,N);
+gam_AR1Unb=UnbiasedCrossCorr(Ar1,N);
 %Réel de AR1
 gam_AR1R=zeros(1,N);
 for i=1:N
@@ -35,8 +35,8 @@ for i=1:N
 end
 
 %computation de Sinus
-gam_SWave1=BiasedCrossCorr(SWave1,p);
-gam_SWave1Unb=UnbiasedCrossCorr(SWave1,p);
+gam_SWave1=BiasedCrossCorr(SWave1,N);
+gam_SWave1Unb=UnbiasedCrossCorr(SWave1,N);
 %Réel Sinus
 gam_SWave1R=zeros(1,N);
 for i=1:N
@@ -58,32 +58,36 @@ Ar1Test= genAR(N,a,var,1);
 
 %Moyennage BB et Sin depahasé
 [PSDsinC1, NusinC1] = psdEstimatorC(Sin1,500, 1);
-[PSDsinC2, NusinC2] = psdEstimatorC(Sin1,500, 10);
-[PSDsinC3, NusinC3] = psdEstimatorC(Sin1,500, 50);
+[PSDsinC2, NusinC2] = psdEstimatorC(Sin1,500, 4);
+[PSDsinC3, NusinC3] = psdEstimatorC(Sin1,500, 7);
 
-[PSDBruitC1, NuBruitC1] = psdEstimatorC(Bruit1,500, 50);
-[PSDBruitC2, NuBruitC2] = psdEstimatorC(Bruit1,500, 100);
-[PSDBruitC3, NuBruitC3] = psdEstimatorC(Bruit1,500, 200);
+[PSDBruitC1, NuBruitC1] = psdEstimatorC(Bruit1,500, 1);
+[PSDBruitC2, NuBruitC2] = psdEstimatorC(Bruit1,500, 20);
+[PSDBruitC3, NuBruitC3] = psdEstimatorC(Bruit1,500, 500);
 
-YuleWalkerSolver(gam_wn,1);
+[PSDAR1C1, NuAR1C1] = psdEstimatorC(Ar1Test,500, 1);
+[PSDAR1C2, NuAR1C2] = psdEstimatorC(Ar1Test,500, 20);
+[PSDAR1C3, NuAR1C3] = psdEstimatorC(Ar1Test,500, 50);
+
+%YuleWalkerSolver(gam_wn,1);
 YuleWalkerSolver(gam_AR1,1);
-YuleWalkerSolver(gam_SWave1,2);
+%YuleWalkerSolver(gam_SWave1,2);
 
-[son1, Fe1] = audioread("./data/193309__margo-heston__ooo.flac");
+%[son1, Fe1] = audioread("./data/193309__margo-heston__ooo.flac");
 
-son1 = son1.';
-son1 = son1(1, :);
+%son1 = son1.';
+%son1 = son1(1, :);
 %son1 = son1(600 : N+599)
 
-Cx1 = UnbiasedCrossCorr(son1);
+%Cx1 = UnbiasedCrossCorr(son1);
 
-bool1 = isVoiced(Cx1,Fe);
+%bool1 = isVoiced(Cx1,Fe);
 
-K1 = 10 ;
-K2 = 30 ;
-[a1, v1] = YuleWalkerSolver(Cx1, K1);
-[a2, v2] = YuleWalkerSolver(Cx1, K2);
+%K1 = 10 ;
+%K2 = 30 ;
+%[a1, v1] = YuleWalkerSolver(Cx1, K1);
+%[a2, v2] = YuleWalkerSolver(Cx1, K2);
 
-Son1EstimK1 = filter(a1, 1, son1);
-Son1EstimK2 = filter(a2, 1, son1);
+%Son1EstimK1 = filter(a1, 1, son1);
+%Son1EstimK2 = filter(a2, 1, son1);
 %Plot;

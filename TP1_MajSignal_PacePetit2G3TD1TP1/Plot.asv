@@ -28,7 +28,7 @@ figure(2)
 hold on
 stem(gam_wn);
 stem(gam_wnUnb);
-%stem(gam_wnR);
+stem(gam_wnR);
 hold off
 legend('Estimateur Autocorrelation biaisé','Estimateur Unbiased autocorrelation');
 xlabel('p'); 
@@ -39,7 +39,7 @@ figure(3)
 hold on
 stem(gam_AR1);
 stem(gam_AR1Unb);
-%stem(gam_AR1R);
+stem(gam_AR1R);
 hold off
 legend('Estimateur Autocorrelation biaisé','Estimateur Unbiased autocorrelation');
 xlabel('p'); 
@@ -50,7 +50,7 @@ figure(4)
 hold on
 stem(gam_SWave1);
 stem(gam_SWave1Unb);
-%stem(gam_SWave1R)
+stem(gam_SWave1R)
 hold off
 legend('Estimateur Autocorrelation biaisé','Estimateur Unbiased autocorrelation');
 xlabel('p'); 
@@ -68,8 +68,8 @@ plot(x,abs(y));
 
 figure (6)
 hold on
-plot(Nusin, PSDsin)
-plot(Nusin, PSDPsin)
+plot(NusinC, PSDsinC)
+plot(NusinP, PSDPsinP)
 hold off
 xlabel("fréquence réduite Nu")
 ylabel("Amplitude")
@@ -105,7 +105,7 @@ hold off;
 xlabel("fréquence réduite Nu");
 ylabel("Amplitude");
 title("Influence de la largeur de fenetre");
-legend("Sin | h=1", "Sin | h=5","Sin | h=10");
+legend("Sin | K=1", "Sin | K=2","Sin | K=3");
 
 figure (10)
 hold on
@@ -114,4 +114,13 @@ hold off
 xlabel("fréquence réduite Nu")
 ylabel("Amplitude")
 title("Influence de la largeur de fenetre")
-legend("Sin | h=1", "Sin | h=5","Sin | h=10");
+legend("Bruit | K=1", "Bruit | K=20","Bruit | K=50");
+
+figure (11)
+hold on
+plot(NuAR1C1, PSDAR1C1,NuAR1C2,PSDAR1C2,NuAR1C3,PSDAR1C3)
+hold off
+xlabel("fréquence réduite Nu")
+ylabel("Amplitude")
+title("Influence de la largeur de fenetre")
+legend("AR1 | h=50", "AR1 | h=100","AR1 | h=200");
