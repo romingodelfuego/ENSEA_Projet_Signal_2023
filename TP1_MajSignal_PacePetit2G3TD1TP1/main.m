@@ -2,7 +2,7 @@
 
 % Constantes
 N=512; %Nombre d'échantillons
-Fe=44100; %Freq échantillonage
+Fe=4400; %Freq échantillonage
 var=0.5; %Variance de whitenoise
 a=0.5; %Paramètre autorégressif
 freq=440; %Freq sinus
@@ -12,7 +12,7 @@ Nu0=sqrt(2)/8;
 
 %Data échantillon
 BruitB= genBB(N, var);
-Ar1=genAR1(N,a,var);
+Ar1=genAR(N,a,var,10);
 SWave1=genSW(N,a,freq,Fe);
 SWave2=genSW(N,a,freq,Fe);
 SWave3=genSW(N,a,freq,Fe);
@@ -69,9 +69,9 @@ Ar1Test= genAR(N,a,var,1);
 [PSDAR1C2, NuAR1C2] = psdEstimatorC(Ar1Test,500, 20);
 [PSDAR1C3, NuAR1C3] = psdEstimatorC(Ar1Test,500, 50);
 
-%YuleWalkerSolver(gam_wn,1);
+YuleWalkerSolver(gam_wn,1);
 YuleWalkerSolver(gam_AR1,1);
-%YuleWalkerSolver(gam_SWave1,2);
+YuleWalkerSolver(gam_SWave1,2);
 
 %[son1, Fe1] = audioread("./data/193309__margo-heston__ooo.flac");
 

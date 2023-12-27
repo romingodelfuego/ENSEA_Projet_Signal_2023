@@ -1,6 +1,6 @@
 %%genAR1 function
 function outp = genAR(N,a,var,K)
-    if nargin()<4
+    if nargin<4
         K=1;
     end
 
